@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      color: #403042;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    header {
+      background: #ffd6e7;
+      padding: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header.shrink {
+      padding: 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #b84d70;
+      transition: font-size 0.3s ease;
+    }
+    header.shrink h1 {
+      font-size: 2rem;
+    }
+    section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .date-location {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #7a3e52;
+    }
+    .rsvp-button {
+      background: #b84d70;
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 2rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .rsvp-button:hover {
+      background: #9e3d5e;
+    }
+    .timeline {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .timeline-event {
+      background: #ffe4ec;
+      border-left: 4px solid #b84d70;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    footer {
+      background: #ffd6e7;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #7a3e52;
+    }
+    #countdown {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #b84d70;
+    }
+    img.hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      border-radius: 0 0 30px 30px;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #b84d70;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #5e4b3c;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header id="main-header">
+    <h1>Emma & Noah</h1>
+    <div class="date-location">October 10, 2025 · Tuscany, Italy</div>
+    <div id="countdown"></div>
+  </header>
+
+  <img src="https://images.unsplash.com/photo-1508014923743-6c2ca4698b47?crop=entropy&cs=tinysrgb&fit=crop&h=800&q=80&w=1600" alt="Wedding" class="hero-image">
+
+  <section id="our-story">
+    <h2>Our Story</h2>
+    <p>From a spontaneous coffee shop meeting to a beautiful journey of love. We can't wait to celebrate our special day with you!</p>
+  </section>
+
+  <section id="wedding-details">
+    <h2>Wedding Details</h2>
+    <p>Join us for a breathtaking sunset ceremony in the heart of Tuscany, followed by a night of dinner, dancing, and laughter.</p>
+    <a href="#timeline" class="rsvp-button">View Timeline</a>
+  </section>
+
+  <section id="timeline">
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-event">
+        <strong>4:00 PM</strong> - Guest Arrival & Welcome Drinks
+      </div>
+      <div class="timeline-event">
+        <strong>5:00 PM</strong> - Ceremony Begins
+      </div>
+      <div class="timeline-event">
+        <strong>6:00 PM</strong> - Cocktail Hour & Photos
+      </div>
+      <div class="timeline-event">
+        <strong>7:00 PM</strong> - Dinner & Toasts
+      </div>
+      <div class="timeline-event">
+        <strong>9:00 PM</strong> - Dancing Under the Stars
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made with love · Emma & Noah · 2025</p>
+  </footer>
+
+  <script>
+    const countdown = document.getElementById('countdown');
+    const weddingDate = new Date('2025-10-10T00:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = weddingDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+  </script>
+</body>
+</html>
