@@ -1,0 +1,1 @@
+ - adauga poza cu marius si lori de cand erau mici , unu zambaret si unu trist, ne-am gasit la calculatoare, la facultate

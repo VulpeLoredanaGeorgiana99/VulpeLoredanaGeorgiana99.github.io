@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Raleway&display=swap" rel="stylesheet">
+  <!--<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  -->
   <style>
     html {
       scroll-behavior: smooth;
     }
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
       background: #fff0f5;
@@ -32,7 +36,8 @@
     }
     header h1 {
       margin: 0;
-      font-family: 'Playfair Display', serif;
+      //font-family: 'Playfair Display', serif;
+      font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       color: #b84d70;
       transition: font-size 0.3s ease;
@@ -111,12 +116,13 @@
       }
     }
     h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Great Vibes', cursive;
       font-size: 2.5rem;
       color: #b84d70;
       margin-bottom: 1rem;
     }
     p {
+      font-family: 'Raleway', sans-serif;
       font-size: 1.2rem;
       color: #5e4b3c;
       line-height: 1.6;
@@ -125,22 +131,18 @@
 </head>
 <body>
   <header id="main-header">
-    <h1>Emma & Noah</h1>
-    <div class="date-location">October 10, 2025 · Tuscany, Italy</div>
+    <h1>Loredana & Marius</h1>
+    <div class="date-location">4 Iulie, 2026</div>
     <div id="countdown"></div>
   </header>
 
-  <img src="https://images.unsplash.com/photo-1508014923743-6c2ca4698b47?crop=entropy&cs=tinysrgb&fit=crop&h=800&q=80&w=1600" alt="Wedding" class="hero-image">
-
-  <section id="our-story">
-    <h2>Our Story</h2>
-    <p>From a spontaneous coffee shop meeting to a beautiful journey of love. We can't wait to celebrate our special day with you!</p>
-  </section>
+  <!-- -->
+  <img src="photos/ua-1.jpg" alt="Wedding" style="width: 600px; height: 800px; object-fit: cover;" class="hero-image">
 
   <section id="wedding-details">
-    <h2>Wedding Details</h2>
-    <p>Join us for a breathtaking sunset ceremony in the heart of Tuscany, followed by a night of dinner, dancing, and laughter.</p>
-    <a href="#timeline" class="rsvp-button">View Timeline</a>
+    <h2>Detallile nuntii</h2>
+    <p>Nunta mica, facuta la Galatz, mai modesta. Cine vine, foarte bine, cine nu, nu</p>
+    <a href="#timeline" class="rsvp-button">Program</a>
   </section>
 
   <section id="timeline">
@@ -165,12 +167,12 @@
   </section>
 
   <footer>
-    <p>Made with love · Emma & Noah · 2025</p>
+    <p>Facut cu dragoste · Loredana & Marius · 2025</p>
   </footer>
 
   <script>
-    const countdown = document.getElementById('countdown');
-    const weddingDate = new Date('2025-10-10T00:00:00');
+    /*const countdown = document.getElementById('countdown');
+    const weddingDate = new Date('2025-05-02T00:00:00');
 
     function updateCountdown() {
       const now = new Date();
@@ -181,10 +183,35 @@
       const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
       const seconds = Math.floor((timeLeft / 1000) % 60);
 
-      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      countdown.innerHTML = `${days}zile ${hours}ore ${minutes}minute ${seconds}secunde`;
     }
 
     setInterval(updateCountdown, 1000);
+    */
+
+    const countdown = document.getElementById('countdown');
+    const weddingDate = new Date('2026-04-07T12:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = weddingDate - now;
+
+      if (timeLeft <= 0) {
+        countdown.innerHTML = "Se întâmplă chiar acum!";
+        clearInterval(interval); // stop the countdown
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+
+      countdown.innerHTML = `${days} zile ${hours} ore ${minutes} minute ${seconds} secunde`;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // initial call
 
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
